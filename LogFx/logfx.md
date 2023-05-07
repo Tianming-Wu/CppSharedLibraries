@@ -77,7 +77,7 @@ Table of content:
 
 
 ## `int write(std::string)`
-Function `int write(std::string message)` will not add a timestamp and any other thing, it just transfer your string into `std::ofstream`.
+Function `int write(std::string message)` will not add a timestamp or any other thing, it just transfer your string into `std::ofstream`.
 If no error occoured, the function returns `0`.
 ```cpp
 int main() {
