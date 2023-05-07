@@ -234,7 +234,7 @@ time format: `"yyyymmdd_hhmmss"`. Use `setTimeFormat_timerfilename(std::string)`
 Parameters:
  - `prefix` : If is not empty, this will be conneted before the time and is seperated with '_'.
  - `suffix` : If is not empty, this will be conneted after the time and is seperated with '_'.
- - `extname` : This will specify the extname of the file. DO NOT add the dot(`.`). If empty, it is `"log"`.
+ - `extname` : This will specify the extname of the file. **DO NOT** add the dot(`.`). If empty, it is `"log"`.
 
 You can just send `""` if you are only using the parameter behind it.
 
