@@ -170,9 +170,9 @@ orig
 ## "std::stringstream* stream()", "int writeStream()" and "int writeStream(std::stringstream& wistream)"
 This function returns the pointer of a `std::basic_stringstream<typename _type>` object that you can write into it.
 
-The changes you made to the stringstream will not automatically written into the file. Use `writeStream()` with no parameter to write to file and **clear the stringstream**.
+The changes you made to the stringstream will not be automatically written into the log. Use `writeStream()` with no parameter to write to the log and **clear the stringstream**.
 
-If you recall this function, the stream will be flushed and cleared.
+If you recall this function, the stream will be cleared and flushed.
 ```cpp
 #include <sstream>
 int main() {
@@ -191,7 +191,7 @@ ID: 0
 
 
 ```
-The function `writeStream(std::stringstream&)` writes the content user-specified stringstream object into the file. In this case, the stringstream won't be cleared.
+The function `writeStream(std::stringstream&)` writes the content of a user-specified stringstream object into the file. In this case, the stringstream **won't be cleared**.
 ```cpp
 #include <sstream>
 int main() {
