@@ -9,12 +9,30 @@
 
 namespace windowhandler {
 
+enum hxWindowFlags {
+    HXC_TITLEBAR = 0x00000001,
+    HXC_DRAGABLE = 0x00000002,
+    HXC_RESIZABLE = 0x00000004,
+    HXC_AUTODRAW = 0x00000008,
+    HXC_,
+    HXC_
+};
+
+#define HXC_USEDEFAULT HXC_AUTODRAW
+
+
+#define HXC_NORMALWINDOW
+
 class hxWindowClass {
 private:
     WNDCLASSEX wc;
+    static LRESULT CALLBACK WindowProc(HWND hwnd, UINT umsg, WPARAM wParam, LPARAM lParam);
+    RECT wndRect, cliRect, desktopRect;
+
+    void Sync();
+
 public:
     hxWindowClass(std::string name);
-    //hxWindowClass(std::string name);
 
     const WNDCLASSEX cclass() const { return wc; }
     WNDCLASSEX* rpclass() { return &wc; }
@@ -31,9 +49,12 @@ protected:
     HWND _hwnd = nullptr;
     size_t x, y, height, width;
 public:
+    virtual base_hxBaseWindow();
     BOOL show(int showid) { return ShowWindow(_hwnd, showid); }
     BOOL close() {  }
     HWND hwnd() const { return _hwnd; }
+    void Resize(size_t width, size_t hight);
+    void Move(size_t x, size_t y);
 };
 
 class base_hxWindow : public base_hxBaseWindow
