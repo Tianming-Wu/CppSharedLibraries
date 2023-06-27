@@ -4,13 +4,19 @@
 #include <sstream>
 #include <vector>
 
+#define STRINGLIST_REGISTER_TYPE(_name) \
+    using _tagString = std::basic_string<_name, std::char_traits<_name>, std::allocator<_name>>;\
+    using _tagStringStream = std::basic_stringstream<_name, std::char_traits<_name>, std::allocator<_name>>;
+
 namespace std {
 
+
     template <typename _tcType>
-    class _tagStringList {
-        using _tagString = std::basic_string<_tcType, std::char_traits<_tcType>, std::allocator<_tcType>>;
-        using _tagStringStream = std::basic_stringstream<_tcType, std::char_traits<_tcType>, std::allocator<_tcType>>;
-    private:
+    class _tagStringList
+    {
+        //using _tagString = std::basic_string<_tcType, std::char_traits<_tcType>, std::allocator<_tcType>>;
+        //using _tagStringStream = std::basic_stringstream<_tcType, std::char_traits<_tcType>, std::allocator<_tcType>>;
+        STRINGLIST_REGISTER_TYPE(_tcType)
 
     public:
         static const size_t npos = -1;
@@ -62,7 +68,3 @@ namespace std {
     using wStringList = _tagStringList<wchar_t>;
 
 } //namespace std
-
-//local clear
-#undef _tagString
-#undef _tagStringStream
