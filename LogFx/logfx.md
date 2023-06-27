@@ -48,7 +48,7 @@ you can call `LogFx::timestamp()` to get a timestamp without an initialized obje
 You can use this function to customize your filename and make it relative to the time.
 
 You can also give in an initalized `std::basic_ofstream<>` object, but it must match the charater wideness (char or wchar_t) the LogFx or wLogFx uses.
-In this case, the LogFx **WILL NOT** close and delete your stream, so make sure you close it manually. Do not call LogFx after you closed the stream, since I have no idea if you closed the stream.
+In this case, the LogFx **WILL NOT** close and delete your stream, so make sure you close it manually. Do not call LogFx after you closed the stream.
 ```cpp
 import LogFx;
 import std.core;
@@ -109,7 +109,7 @@ _output (file "main.log")_
 **\[[Deprecated]\]**
 Function `template<class... DT> int write_t(const char* __restrict__ _Format, DT... _Data)` is similar to `printf()`. The function returns like `printf()`.
 
-_This function is deprecated and it now always returns 0._
+**Warning:** This function is deprecated and it now always returns 0.
 ```cpp
 int main() {
     double lfs = 3.1234132;
