@@ -144,6 +144,29 @@ namespace std {
             return _tagString(_TimeBuffer);
         }
 
+        static _tagString datestamp() {
+            std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+            std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+            std::tm localTime = *std::localtime(&currentTime);
+            char timestamp[32];
+            std::sprintf_s(timestamp, 32, "%04d/%02d/%02d",
+                localTime.tm_year+1900, localTime.tm_mon+1, localTime.tm_mday);
+            return _tagString(timestamp);
+
+        }
+
+        static _tagString microsecstamp() {
+            std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+            std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+            std::tm localTime = *std::localtime(&currentTime);
+            auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()).count() % 1000000;
+            char timestamp[32];
+            std::sprintf_s(timestamp, 32, "%02d:%02d:%02d.%06d",
+                localTime.tm_hour, localTime.tm_min, localTime.tm_sec,
+                    microseconds);
+            return _tagString(timestamp);
+        }
+
         static _tagString timerfilename(_tagString prefix = "", _tagString suffix = "", _tagString extname = "") {
             time_t tm0 = time(0);
             tm _tm;
