@@ -212,7 +212,7 @@ Userdefined13234ns
 ```
 
 ## static std::string timestamp()
-This function returns a timestamp in `std::string` in style "YY/MM/DD HH:MM:SS".
+This function returns a timestamp in `std::string` in style "YYYY/MM/DD HH:MM:SS".
 ```cpp
 #include <iostream>
 int main() {
@@ -228,7 +228,7 @@ _output (terminal)_
 **[Detailed]**
 This function make a logger filename with three parameters, can be empty.
 
-time format: `"yyyymmdd_hhmmss"`. Use `setTimeFormat_timerfilename(std::string)` to change this, but it should be like `"%02d%02d%02d_%02d%02d%02d"`. 
+time format: `"yyyymmdd_hhmmss"`. Use `setTimeFormat_timerfilename(std::string)` to change this, but it should be like `"%04d%02d%02d_%02d%02d%02d"`. 
 > The actual parser will be included in the later versions, but it is likely to make the program logs much slower. This is not a threaded function and it may be much slower than other powerful libraries such as log4j.
 
 Parameters:
