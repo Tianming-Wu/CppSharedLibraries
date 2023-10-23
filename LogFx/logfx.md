@@ -73,6 +73,8 @@ Table of content:
    - [int **writeStream**()](#stdstringstream-stream-int-writestream-and-int-writestreamstdstringstream-wistream)
    - [int **writeStream**(std::stringstream wistream)](#stdstringstream-stream-int-writestream-and-int-writestreamstdstringstream-wistream)
  - [static std::string **timestamp**()](#static-stdstring-timestamp)
+ - [static std::string **datestamp**()](#static-stdstring-datestamp)
+ - [static std::string **microsecstamp**()](#static-stdstring-microsecstamp)
  - [static std::string **timerfilename**(std::string prefix, std::string suffix, std::string extname)](#static-stdstring-timerfilenamestdstring-prefix-stdstring-suffix-stdstring-extname)
 
 
@@ -212,7 +214,7 @@ Userdefined13234ns
 ```
 
 ## static std::string timestamp()
-This function returns a timestamp in `std::string` in style "YY/MM/DD HH:MM:SS".
+This function returns a timestamp in `std::string` in style "YYYY/MM/DD HH:MM:SS".
 ```cpp
 #include <iostream>
 int main() {
@@ -224,11 +226,17 @@ _output (terminal)_
 2023/05/07 22:09:35
 ```
 
+## static std::string datestamp()
+Output the date "YYYY/MM/DD"
+
+## static std::string microsecstamp()
+Output the time "HH/MM/SS.eeeeee"
+
 ## static std::string timerfilename(std::string prefix, std::string suffix, std::string extname)
 **[Detailed]**
 This function make a logger filename with three parameters, can be empty.
 
-time format: `"yyyymmdd_hhmmss"`. Use `setTimeFormat_timerfilename(std::string)` to change this, but it should be like `"%02d%02d%02d_%02d%02d%02d"`. 
+time format: `"yyyymmdd_hhmmss"`. Use `setTimeFormat_timerfilename(std::string)` to change this, but it should be like `"%04d%02d%02d_%02d%02d%02d"`. 
 > The actual parser will be included in the later versions, but it is likely to make the program logs much slower. This is not a threaded function and it may be much slower than other powerful libraries such as log4j.
 
 Parameters:
