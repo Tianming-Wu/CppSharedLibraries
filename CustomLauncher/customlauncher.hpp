@@ -28,3 +28,6 @@ BOOL CustomLauncher(const _cw* File, const _cw* CommandLine, size_t lengthFile =
 	PROCESS_INFORMATION pi;
     return _CreateProcess(s1,s2,NULL,NULL,FALSE,DETACHED_PROCESS,NULL,NULL,&si,&pi);
 }
+
+#define CustomLauncher<char> CustomLauncherA;
+#define CustomLauncher<wchar_t> CustomLauncherW;
